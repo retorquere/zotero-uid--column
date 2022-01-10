@@ -13,6 +13,7 @@
 
   <treecols id="zotero-items-columns-header">
     <treecol id="zotero-items-column-itemKey" label="UID" flex="1" zotero-persist="width ordinal hidden sortActive sortDirection"/>
+    <treecol id="zotero-items-column-select-link" label="URI" flex="1" zotero-persist="width ordinal hidden sortActive sortDirection"/>
   </treecols>
 	
 	<!-- Include the main extension logic -->
