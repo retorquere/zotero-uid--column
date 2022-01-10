@@ -3,7 +3,7 @@ Uid Column
 
 Install by downloading the [latest version](https://github.com/retorquere/zotero-uid-column/releases/latest)
 
-Displays UID for items
+Displays UID/select link for items
 
 # Support - read carefully
 
