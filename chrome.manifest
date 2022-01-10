@@ -1,0 +1,5 @@
+content	zotero-uid-column				content/
+locale	zotero-uid-column	en-US		locale/en-US/
+skin	zotero-uid-column	default		skin/
+
+overlay	chrome://zotero/content/zoteroPane.xul	chrome://zotero-uid-column/content/zotero-uid-column.xul

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://zotero-uid-column/skin/overlay.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://zotero-uid-column/locale/zotero-uid-column.dtd">
+
+<overlay id="zotero-uid-column-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script>
+    var globals = Function('return this')();
+    var zotero_uid_column_zoteropane = null;
+  </script>
+  <stringbundleset>
+    <stringbundle id="zotero-uid-column-strings" src="chrome://zotero-uid-column/locale/zotero-uid-column.properties"/>
+  </stringbundleset>
+
+  <treecols id="zotero-items-columns-header">
+    <treecol id="zotero-items-column-itemKey" label="UID" flex="1" zotero-persist="width ordinal hidden sortActive sortDirection"/>
+  </treecols>
+	
+	<!-- Include the main extension logic -->
+  <script src="chrome://zotero/content/include.js"/>
+  <script src="chrome://zotero-uid-column/content/zotero-uid-column.js"/>
+  <script>
+    window.addEventListener('load', async function() {
+      try {
+        Zotero.debug('zotero-uid-column startup')
+        await Zotero.UidColumn.load(globals)
+        Zotero.debug('zotero-uid-column started')
+      } catch (err) {
+        Zotero.debug(`zotero-uid-column ZoteroPane overlay error: ${err.message}\n${err.stack ||''}`)
+      }
+    })
+  </script>
+</overlay>
