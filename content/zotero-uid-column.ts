@@ -15,12 +15,16 @@ if (!Zotero.UidColumn) {
 
   patch(Zotero.Item.prototype, 'getField', original => function Zotero_Item_prototype_getField(field: string, unformatted: boolean, includeBaseMapped: boolean): string {
     try {
-      switch (field) {
-        case 'itemKey': return this.key as string
-        case 'select-link':
-          const uri = Zotero.URI.getItemURI(this) // eslint-disable-line no-case-declarations
-          const [ , kind, lib, key ] = uri.match(/^https?:\/\/zotero\.org\/(users|groups)\/((?:local\/)?[^/]+)\/items\/(.+)/) // eslint-disable-line no-case-declarations
+      if (field === 'itemKey') {
+        return this.key as string
+      }
+      else if (field === 'select-link' || field === 'uri') {
+        const uri: string = Zotero.URI.getItemURI(this)
+        if (field === 'uri') return uri
+        if (field ===  'select-link') {
+          const [ , kind, lib, key ] = uri.match(/^https?:\/\/zotero\.org\/(users|groups)\/((?:local\/)?[^/]+)\/items\/(.+)/)
           return (kind === 'users') ? `zotero://select/library/items/${key}` : `zotero://select/groups/${lib}/items/${key}`
+        }
       }
     }
     catch (err) {
