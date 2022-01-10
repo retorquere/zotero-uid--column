@@ -1,4 +1,4 @@
-Uid Column
+UID/select-link/uri column for Zotero
 =================
 
 Install by downloading the [latest version](https://github.com/retorquere/zotero-uid-column/releases/latest)
